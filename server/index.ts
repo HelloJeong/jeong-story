@@ -2,6 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/userRouter";
 import dbInstance from "./services/dbConnect";
+import postRouter from "./routes/postRouter";
 
 const app = express();
 const PORT = 3000;
@@ -17,6 +18,7 @@ async function main() {
     app.use(cookieParser());
 
     app.use("/api/user", userRouter);
+    app.use("/api/post", postRouter);
 
     app.listen(PORT, () => {
       console.log(`Express server listening on PORT: ${PORT}`);

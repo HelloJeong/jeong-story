@@ -1,5 +1,6 @@
-import { Model } from "mongoose";
+import { Model, ObjectId } from "mongoose";
 
+/* User */
 export interface UserType {
   email: string;
   password: string;
@@ -12,7 +13,18 @@ export interface UserDocument extends UserType, Document {
   createToken: () => void;
 }
 
-// static
 export interface UserModel extends Model<UserDocument> {}
 
 export type UserPartialType = Partial<UserType>;
+
+/* Post */
+export interface PostType {
+  user: ObjectId;
+  feed: string;
+}
+
+export interface PostDocument extends PostType, Document {}
+
+export interface PostModel extends Model<PostDocument> {}
+
+export type PostPartialType = Partial<PostType>;
