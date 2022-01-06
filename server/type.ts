@@ -23,7 +23,9 @@ export interface PostType {
   feed: string;
 }
 
-export interface PostDocument extends PostType, Document {}
+export interface PostDocument extends PostType, Document {
+  _id: ObjectId;
+}
 
 export interface PostModel extends Model<PostDocument> {}
 
