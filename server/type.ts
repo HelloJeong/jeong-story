@@ -30,3 +30,23 @@ export interface PostDocument extends PostType, Document {
 export interface PostModel extends Model<PostDocument> {}
 
 export type PostPartialType = Partial<PostType>;
+
+/* Comment */
+export interface CommentType {
+  post: ObjectId;
+  user: ObjectId;
+  text: string;
+}
+
+export interface CommentDocument extends CommentType, Document {
+  _id: ObjectId;
+}
+
+export interface CommentModel extends Model<CommentDocument> {}
+
+export type CommentPartialType = Partial<CommentType>;
+
+export interface CommentQueryType {
+  id: string;
+  commentId: string;
+}

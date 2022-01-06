@@ -3,8 +3,12 @@ import { Request, Router } from "express";
 import User from "../models/User";
 import Post from "../models/Post";
 import { isValidObjectId } from "mongoose";
+import commentRouter from "./commentRouter";
+import Comment from "../models/Comment";
 
 const postRouter = Router();
+
+postRouter.use("/:id/comment", commentRouter);
 
 postRouter.get("/", async (req: Request<{}, {}, PostPartialType>, res) => {
   try {
@@ -110,7 +114,11 @@ postRouter.delete("/:id", async (req: Request<{ id: string }, {}, PostPartialTyp
       return;
     }
 
-    const post = await Post.deleteOne({ _id: id, user: tokenUser._id });
+    const [post, comments] = await Promise.all([
+      Post.deleteOne({ _id: id, user: tokenUser._id }),
+      Comment.deleteMany({ post: id }),
+    ]);
+
     if (!post) {
       res.json({ result: false });
       return;
