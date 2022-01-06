@@ -5,7 +5,7 @@ import dbInstance from "./services/dbConnect";
 import postRouter from "./routes/postRouter";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? +process.env.PORT : 3333;
 
 async function main() {
   try {
