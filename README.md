@@ -1,7 +1,13 @@
-# jeong-story
+# jeong-story(Express + CRA + MongoDB)
 
-# .env
+# /.env
 
 ```
-MONGO_URI=
+MONGO_URI=MongoDB url
+```
+
+# /client/.env
+
+```
+REACT_APP_BASE_URL=server url
 ```

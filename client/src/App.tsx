@@ -1,20 +1,16 @@
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginContainer from "./containers/LoginContainer";
+import HomeContainer from "./containers/HomeContainer";
 
 function App() {
   return (
-    <div className="root">
-      <header>
-        <button>Login</button>
-      </header>
-      <main>
-        <section>
-          <div>input feed</div>
-          <div>
-            <div>feed</div>
-          </div>
-        </section>
-        <aside>chatting</aside>
-      </main>
+    <div className="h-full bg-black text-white">
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomeContainer />} />
+          <Route path="/login" element={<LoginContainer />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
