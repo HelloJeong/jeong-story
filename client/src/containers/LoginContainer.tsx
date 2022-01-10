@@ -1,11 +1,11 @@
 import Login from "../components/Login";
-import { LoginResponseType, LoginUserInputType } from "../type";
+import { UserResponseType, LoginUserInputType } from "../type";
 import axios from "axios";
 import { BASE_URL } from "../common";
 
 function LoginContainer() {
   const onLogin = async (userInfo: LoginUserInputType) => {
-    const { data } = await axios.post<LoginResponseType>(
+    const { data } = await axios.post<UserResponseType>(
       `http://${BASE_URL}/api/user/login`,
       userInfo
     );

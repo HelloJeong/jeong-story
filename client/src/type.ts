@@ -1,4 +1,4 @@
-/* Login */
+/* Login & Signup */
 
 export interface UserInfo {
   _id: string;
@@ -16,7 +16,15 @@ export interface LoginComponentProps {
   onLogin: (userInfo: LoginUserInputType) => Promise<void>;
 }
 
-export interface LoginResponseType {
+export interface UserResponseType {
   result: boolean;
   user: UserInfo;
+}
+
+export interface SignupUserInputType extends LoginUserInputType {
+  name: string;
+}
+
+export interface SignupComponentProps {
+  onSignup: (userInfo: SignupUserInputType) => Promise<void>;
 }
